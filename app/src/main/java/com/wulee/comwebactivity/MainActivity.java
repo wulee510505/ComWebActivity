@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 WebActivity.launch(MainActivity.this,"http://www.baidu.com","百度");
+                 WebActivity.launch(MainActivity.this,"http://www.baidu.com","百度",R.color.colorAccent);
             }
         });
     }
