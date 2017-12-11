@@ -16,12 +16,15 @@ public class WebActivity extends AppCompatActivity implements WebFragment.OnWebV
 
     private RelativeLayout titleLayout;
     private ImageView ivBack;
+    private TextView tvRight;
     private TextView tvTitle;
 
     private WebFragment mWebFragment;
     private ProgressBar mProgressBar;
 
     private int mBgTitleColorRes;
+    private String url;
+    private String title;
 
     /**
      * 启动 Web 容器页面
@@ -33,7 +36,7 @@ public class WebActivity extends AppCompatActivity implements WebFragment.OnWebV
         intent.putExtra("title", title);
         intent.putExtra("url", url);
         intent.putExtra("bgTitleColorRes", bgTitleColorRes);
-        from.startActivity(intent);
+        from.startActivityForResult(intent,0);
     }
 
     @Override
@@ -48,16 +51,18 @@ public class WebActivity extends AppCompatActivity implements WebFragment.OnWebV
     private void initView() {
         titleLayout =  (RelativeLayout) findViewById(R.id.titlelayout);
         ivBack =  (ImageView) findViewById(R.id.iv_back);
+        tvRight =  (TextView) findViewById(R.id.tv_right);
         tvTitle =  (TextView) findViewById(R.id.title);
         mProgressBar = (ProgressBar) findViewById(R.id.pb_web);
 
         ivBack.setOnClickListener(this);
+        tvRight.setOnClickListener(this);
     }
 
 
     private void initData() {
-        String url = getIntent().getStringExtra("url");
-        String title = getIntent().getStringExtra("title");
+        url = getIntent().getStringExtra("url");
+        title = getIntent().getStringExtra("title");
         mBgTitleColorRes = getIntent().getIntExtra("bgTitleColorRes",-1);
 
         setTitle(title);
@@ -101,6 +106,9 @@ public class WebActivity extends AppCompatActivity implements WebFragment.OnWebV
         int id = view.getId();
         if (id == R.id.iv_back) {
             finish();
+        }else  if (id == R.id.tv_right) {
+            Utils.shareTextAndImage(this,title,url, null);
         }
     }
+
 }
