@@ -51,7 +51,7 @@ public class WebActivity extends AppCompatActivity implements WebFragment.OnWebV
     private void initView() {
         titleLayout =  (RelativeLayout) findViewById(R.id.titlelayout);
         ivBack =  (ImageView) findViewById(R.id.iv_back);
-        tvRight =  (TextView) findViewById(R.id.tv_right);
+        tvRight =  (TextView) findViewById(R.id.tv_share);
         tvTitle =  (TextView) findViewById(R.id.title);
         mProgressBar = (ProgressBar) findViewById(R.id.pb_web);
 
@@ -106,7 +106,7 @@ public class WebActivity extends AppCompatActivity implements WebFragment.OnWebV
         int id = view.getId();
         if (id == R.id.iv_back) {
             finish();
-        }else  if (id == R.id.tv_right) {
+        }else  if (id == R.id.tv_share) {
             Utils.shareTextAndImage(this,title,url, null);
         }
     }
